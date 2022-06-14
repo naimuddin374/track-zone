@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { isObjEmpty } from "../../utils/object-util";
-import Button from "../../components/button";
+import SingleItem from "./single-item";
 
 
 
@@ -16,31 +16,18 @@ const List = ({ data, toggle, handleDelete }) => {
                         <th>Name</th>
                         <th>Date&Time</th>
                         <th>Status</th>
+                        <th>TimeZone</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {!isObjEmpty(data) && Object.values(data).map((item, index) => <tr key={item.id}>
-                        <td>{++index}</td>
-                        <td>{item.name}</td>
-                        <td>{item.datetime}</td>
-                        <td>{item.status === 1 ? 'Active' : 'Inactive'}</td>
-                        <td>
-                            <Button
-                                label={'Edit'}
-                                variant={'primary'}
-                                type={'button'}
-                                clickHandler={() => toggle(item)}
-                            />
-                            <Button
-                                label={'Delete'}
-                                variant={'danger'}
-                                type={'button'}
-                                clickHandler={() => handleDelete(item.id)}
-                                classes={'ms-3'}
-                            />
-                        </td>
-                    </tr>)}
+                    {!isObjEmpty(data) && Object.values(data).map((item, index) => <SingleItem
+                        key={item.id}
+                        index={index}
+                        item={item}
+                        toggle={toggle}
+                        handleDelete={handleDelete}
+                    />)}
                 </tbody>
             </table>
         </div>
