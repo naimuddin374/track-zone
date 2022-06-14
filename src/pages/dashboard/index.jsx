@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from "../../components/button";
 import useData from '../../hooks/useData';
+import { isObjEmpty } from '../../utils/object-util';
 import CreateForm from "./create-form";
 import List from './list';
 
@@ -8,7 +9,7 @@ const Dashboard = () => {
     const [isOpen, setIsOpen] = React.useState(false);
     const [editData, setEditData] = React.useState({});
 
-    const { formData, handleClear, handleCreate, handleUpdate, handleDelete } = useData();
+    const { formData, handleClear, handleCreate, handleUpdate, handleDelete, handleStatus } = useData();
 
     const toggle = (obj = {}) => {
         setEditData(obj);
@@ -25,13 +26,14 @@ const Dashboard = () => {
                 classes={'float-end'}
                 clickHandler={toggle}
             />
-            <Button
-                type={'button'}
-                label={'Clear'}
-                variant={'dark'}
-                classes={'float-end me-3'}
-                clickHandler={() => handleClear()}
-            />
+            {!isObjEmpty(formData) &&
+                <Button
+                    type={'button'}
+                    label={'Clear'}
+                    variant={'danger'}
+                    classes={'float-end me-3'}
+                    clickHandler={() => handleClear()}
+                />}
             {isOpen ? <CreateForm
                 handleCreate={handleCreate}
                 handleUpdate={handleUpdate}
@@ -41,6 +43,7 @@ const Dashboard = () => {
                 toggle={toggle}
                 data={formData}
                 handleDelete={handleDelete}
+                handleStatus={handleStatus}
             />}
         </div>
     );

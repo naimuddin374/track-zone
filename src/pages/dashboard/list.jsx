@@ -5,31 +5,63 @@ import SingleItem from "./single-item";
 
 
 
-const List = ({ data, toggle, handleDelete }) => {
+const listTimeZone = [
+    {
+        label: 'Asia/Dhaka',
+        value: '+06'
+    },
+    {
+        label: 'America/New_York',
+        value: '-05'
+    },
+    {
+        label: 'Asia/Bangkok',
+        value: '+07'
+    },
+    {
+        label: 'Asia/Singapore',
+        value: '+08'
+    },
+    {
+        label: 'Europe/Paris',
+        value: '+01'
+    },
+    {
+        label: 'Europe/London',
+        value: '+00'
+    }
+]
+
+const List = ({ data, toggle, handleDelete, handleStatus }) => {
+    const [timeZone, setTimeZone] = React.useState('+06');
+
+
+
+
     return (
         <div className="pt-5">
-            <h4>List of Clock</h4>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>SL.</th>
-                        <th>Name</th>
-                        <th>Date&Time</th>
-                        <th>Status</th>
-                        <th>TimeZone</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {!isObjEmpty(data) && Object.values(data).map((item, index) => <SingleItem
-                        key={item.id}
-                        index={index}
-                        item={item}
-                        toggle={toggle}
-                        handleDelete={handleDelete}
-                    />)}
-                </tbody>
-            </table>
+            <div className="d-flex justify-content-between">
+                <h4>List of Clock</h4>
+                <select
+                    value={timeZone}
+                    onChange={(e) => setTimeZone(e.target.value)}
+                >
+                    {listTimeZone.map(item =>
+                        <option key={item.value} value={item.value}>{item.label}</option>
+                    )}
+                </select>
+            </div>
+            <div className="d-flex justify-content-start">
+                {!isObjEmpty(data) && Object.values(data).map((item, index) => <SingleItem
+                    key={item.id}
+                    index={index}
+                    item={item}
+                    toggle={toggle}
+                    handleDelete={handleDelete}
+                    handleStatus={handleStatus}
+                    timeZone={timeZone}
+                />)}
+            </div>
         </div>
     )
 }
@@ -38,6 +70,7 @@ List.propTypes = {
     data: PropTypes.object,
     toggle: PropTypes.func.isRequired,
     handleDelete: PropTypes.func.isRequired,
+    handleStatus: PropTypes.func.isRequired,
 }
 List.defaultProps = {
     data: {}
