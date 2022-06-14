@@ -22,9 +22,10 @@ CustomInput.propTypes = {
     label: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
     classes: PropTypes.string,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.string,
 }
 CustomInput.defaultProps = {
     classes: '',
+    value: '',
 }
 export default CustomInput;

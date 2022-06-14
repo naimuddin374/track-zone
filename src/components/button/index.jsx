@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const CustomButton = ({ type, label, variant, classes, clickHandler }) => {
+const Button = ({ type, label, variant, classes, clickHandler }) => {
     return (
         <button
             type={type}
@@ -12,15 +12,16 @@ const CustomButton = ({ type, label, variant, classes, clickHandler }) => {
     )
 }
 
-CustomButton.propTypes = {
+Button.propTypes = {
     type: PropTypes.string,
     label: PropTypes.string.isRequired,
     variant: PropTypes.string.isRequired,
-    clickHandler: PropTypes.func.isRequired,
+    clickHandler: PropTypes.func,
     classes: PropTypes.string,
 }
-CustomButton.defaultProps = {
+Button.defaultProps = {
     type: 'button',
     classes: '',
+    clickHandler: () => { }
 }
-export default CustomButton;
+export default Button;
