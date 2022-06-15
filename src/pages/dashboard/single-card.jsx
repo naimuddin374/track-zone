@@ -7,7 +7,7 @@ import { getTimeCalculate } from '../../utils/helper';
 
 
 
-const SingleItem = ({ item, toggle, handleDelete, handleStatus, timeZone }) => {
+const SingleCard = ({ item, toggle, handleDelete, handleStatus, timeZone }) => {
     const [time, setTime] = React.useState("00:00:00");
 
 
@@ -57,17 +57,17 @@ const SingleItem = ({ item, toggle, handleDelete, handleStatus, timeZone }) => {
     )
 }
 
-SingleItem.propTypes = {
+SingleCard.propTypes = {
     item: PropTypes.object,
     toggle: PropTypes.func.isRequired,
     handleDelete: PropTypes.func.isRequired,
     handleStatus: PropTypes.func.isRequired,
     timeZone: PropTypes.string.isRequired,
 }
-SingleItem.defaultProps = {
+SingleCard.defaultProps = {
     item: {}
 }
-export default SingleItem;
+export default SingleCard;
 
 
 const cardStyle = {

@@ -28,7 +28,7 @@ const validate = (values) => {
 };
 
 
-const CreateForm = ({ handleCreate, handleUpdate, toggle, data }) => {
+const Form = ({ handleCreate, handleUpdate, toggle, data }) => {
 
     const getInitValue = () => {
         if (!isObjEmpty(data)) {
@@ -93,12 +93,12 @@ const CreateForm = ({ handleCreate, handleUpdate, toggle, data }) => {
         </div>
     )
 };
-CreateForm.propTypes = {
+Form.propTypes = {
     data: PropTypes.object,
     handleCreate: PropTypes.func.isRequired,
     toggle: PropTypes.func.isRequired
 }
-CreateForm.defaultProps = {
+Form.defaultProps = {
     data: {}
 }
-export default CreateForm;
+export default Form;

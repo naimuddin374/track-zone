@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { isObjEmpty } from "../../utils/object-util";
-import SingleItem from "./single-item";
+import SingleCard from "./single-card";
 
 
 
@@ -52,7 +52,7 @@ const List = ({ data, toggle, handleDelete, handleStatus }) => {
                 </select>
             </div>
             <div className="d-flex justify-content-start">
-                {!isObjEmpty(data) && Object.values(data).map((item, index) => <SingleItem
+                {!isObjEmpty(data) && Object.values(data).map((item, index) => <SingleCard
                     key={item.id}
                     index={index}
                     item={item}

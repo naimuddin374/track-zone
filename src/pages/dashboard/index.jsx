@@ -2,7 +2,7 @@ import React from 'react';
 import Button from "../../components/button";
 import useData from '../../hooks/useData';
 import { isObjEmpty } from '../../utils/object-util';
-import CreateForm from "./create-form";
+import Form from "./form";
 import List from './list';
 
 const Dashboard = () => {
@@ -34,7 +34,7 @@ const Dashboard = () => {
                     classes={'float-end me-3'}
                     clickHandler={() => handleClear()}
                 />}
-            {isOpen ? <CreateForm
+            {isOpen ? <Form
                 handleCreate={handleCreate}
                 handleUpdate={handleUpdate}
                 toggle={toggle}
