@@ -48,7 +48,7 @@ const List = ({ data, toggle, handleDelete, handleStatus }) => {
                         onChange={(e) => setTimeZone(e.target.value)}
                     >
                         {listTimeZone.map(item =>
-                            <option key={item.value} value={item.value}>{item.label}</option>
+                            <option key={item.value} value={item.value}>{item.label} ({item.value})</option>
                         )}
                     </select>}
             </div>

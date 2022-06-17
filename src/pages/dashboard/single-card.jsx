@@ -71,9 +71,9 @@ export default SingleCard;
 
 
 const cardStyle = {
-    height: "250px",
-    width: "250px",
-    lineHeight: "250px",
+    height: "240px",
+    width: "240px",
+    lineHeight: "240px",
     textAlign: "center",
     border: "5px solid rgb(255 0 129)",
     borderRadius: "50%",
