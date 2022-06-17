@@ -22,6 +22,8 @@ const validate = (values) => {
 
     if (!values.datetime) {
         errors.datetime = 'Datetime is Required!';
+    } else if (new Date(values.datetime) < new Date()) {
+        errors.datetime = 'Invalid Date!';
     }
 
     return errors;

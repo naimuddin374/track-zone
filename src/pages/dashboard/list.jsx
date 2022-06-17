@@ -42,14 +42,15 @@ const List = ({ data, toggle, handleDelete, handleStatus }) => {
         <div className="pt-5">
             <div className="d-flex justify-content-between">
                 <h4>List of Clock</h4>
-                <select
-                    value={timeZone}
-                    onChange={(e) => setTimeZone(e.target.value)}
-                >
-                    {listTimeZone.map(item =>
-                        <option key={item.value} value={item.value}>{item.label}</option>
-                    )}
-                </select>
+                {!isObjEmpty(data) &&
+                    <select
+                        value={timeZone}
+                        onChange={(e) => setTimeZone(e.target.value)}
+                    >
+                        {listTimeZone.map(item =>
+                            <option key={item.value} value={item.value}>{item.label}</option>
+                        )}
+                    </select>}
             </div>
             <div className="d-flex justify-content-start">
                 {!isObjEmpty(data) && Object.values(data).map((item, index) => <SingleCard
